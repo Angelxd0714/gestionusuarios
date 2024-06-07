@@ -1,6 +1,6 @@
 package com.gestionusuarios.gestionusuarios.models;
 
-import com.gestionusuarios.gestionusuarios.models.User;
+import com.gestionusuarios.gestionusuarios.models.UserEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,7 +35,7 @@ public class Role {
   @Enumerated(EnumType.STRING)
   private Roles name;
   @ManyToMany(mappedBy = "roles")
-  private Set<User> users;
+  private Set<UserEntity> users;
   @ManyToMany(mappedBy = "roles")
   private Set<Permission> permissions = new HashSet<>();
 }

@@ -4,8 +4,11 @@
  */
 package com.gestionusuarios.gestionusuarios.services;
 
-import com.gestionusuarios.gestionusuarios.models.User;
+import com.gestionusuarios.gestionusuarios.models.UserEntity;
 import com.gestionusuarios.gestionusuarios.repository.UserRepository;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,14 +25,14 @@ public class UserServiceImpl implements UserService{
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public User saveUser(User user) {
+    public UserEntity saveUser(UserEntity user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
     @Override
-    public User findUser(String name) {
-       return userRepository.findByUsername(name);
+    public UserEntity findUser(String name) {
+       return userRepository.findByUsername2(name);
     }
     
 }

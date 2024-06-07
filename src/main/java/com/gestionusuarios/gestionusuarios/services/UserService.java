@@ -4,13 +4,13 @@
  */
 package com.gestionusuarios.gestionusuarios.services;
 
-import com.gestionusuarios.gestionusuarios.models.User;
+import com.gestionusuarios.gestionusuarios.models.UserEntity;
 
 /**
  *
  * @author angel
  */
 public interface UserService {
-    User saveUser(User user);
-    User findUser(String name);
+    UserEntity saveUser(UserEntity user);
+    UserEntity findUser(String name);
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author angel
  */
-@RestController
+@Controller
 @RequestMapping("/auth")
 @PreAuthorize("denyAll()")
 public class UserController {

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 import com.gestionusuarios.gestionusuarios.models.Permission;
 import com.gestionusuarios.gestionusuarios.models.Role;
 import com.gestionusuarios.gestionusuarios.models.Roles;
-import com.gestionusuarios.gestionusuarios.models.User;
+import com.gestionusuarios.gestionusuarios.models.UserEntity;
 import com.gestionusuarios.gestionusuarios.repository.PermissionRepository;
 import com.gestionusuarios.gestionusuarios.repository.RoleRepository;
 import com.gestionusuarios.gestionusuarios.repository.UserRepository;
