@@ -29,6 +29,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.gestionusuarios.gestionusuarios.models.Roles;
+
 /**
  *
  * @author angel
@@ -61,6 +63,12 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .httpBasic(Customizer.withDefaults())
+                .authorizeHttpRequests(authz -> {
+                    authz.requestMatchers(HttpMethod.GET, "/auth/index").permitAll();
+                    authz.requestMatchers(HttpMethod.GET, "/auth/security").hasAuthority("read");
+                    authz.requestMatchers(HttpMethod.GET, "/auth/inicio").hasAuthority("read");
+                    authz.anyRequest().denyAll();
+                })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
@@ -81,15 +89,17 @@ public class SecurityConfig {
         return daoAuthenticationProvider;
 
     }
-/* 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        List<UserDetails> user = new ArrayList<>();
-        user.add(User.withUsername("angel").password("1452").roles("ADMIN").authorities("READ", "CREATE").build());
-        user.add(User.withUsername("pedro").password("455").roles("user").authorities("READ").build());
-        return new InMemoryUserDetailsManager(user);
-    }
-    */
+    /*
+     * @Bean
+     * public UserDetailsService userDetailsService() {
+     * List<UserDetails> user = new ArrayList<>();
+     * user.add(User.withUsername("angel").password("1452").roles("ADMIN").
+     * authorities("READ", "CREATE").build());
+     * user.add(User.withUsername("pedro").password("455").roles("user").authorities
+     * ("READ").build());
+     * return new InMemoryUserDetailsManager(user);
+     * }
+     */
 
     @Bean
     public PasswordEncoder passwordEncoder() {

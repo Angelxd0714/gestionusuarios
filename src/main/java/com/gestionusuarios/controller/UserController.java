@@ -17,18 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/auth")
-@PreAuthorize("denyAll()")
 public class UserController {
 
+    @GetMapping("/inicio")
+    /* @PreAuthorize("hasAuthority('read')") */
+    public String inicio() {
+        return "hola";
+    }
+
     @GetMapping("/index")
-    @PreAuthorize("permitAll()")
+
     public String index() {
         return "index";
     }
 
-    ;
     @GetMapping("/security")
-    @PreAuthorize("hasAuthority('READ')")
+
     public String security() {
         return "lugar seguro";
     }
