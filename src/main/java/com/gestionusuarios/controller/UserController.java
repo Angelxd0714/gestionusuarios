@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author angel
  */
-@Controller
+@RestController
 @RequestMapping("/auth")
 @PreAuthorize("denyAll()")
 public class UserController {
@@ -23,7 +23,7 @@ public class UserController {
     @GetMapping("/index")
     @PreAuthorize("permitAll()")
     public String index() {
-        return "Hola";
+        return "index";
     }
 
     ;

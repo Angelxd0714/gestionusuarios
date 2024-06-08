@@ -10,14 +10,17 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author angel
  */
+@Repository
 public interface UserRepository extends CrudRepository<UserEntity, Long> {
      Optional<UserEntity> findByUsername(String username);
-
-     @Query("SELECT u FROM User u WHERE u.username = ?1")
-     UserEntity findByUsername2(String username);
+     /*
+      * @Query("SELECT u FROM User u WHERE u.username = ?1")
+      * UserEntity findByUsername2(String username);
+      */
 }
